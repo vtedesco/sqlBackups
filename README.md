@@ -14,7 +14,7 @@ Both Client and server side
 `ssh-keygen -t dsa`
 
 Client Side
-`scp .ssh/id_dsa.pub backup-user@server:~/.ssh/authorized_keys`
+`ssh-copy-id -i ~/.ssh/id_rsa.pub backups@remote-host`
 
 
 ### Setup script
