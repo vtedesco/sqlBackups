@@ -16,7 +16,7 @@ for SQL in $LISTEBDD
 
 do
 
-  if [ $SQL != "information_schema" ] && [ $SQL != "mysql" ] && [ $SQL != "Database" ]; then
+  if [ $SQL != "information_schema" ] && [ $SQL != "mysql" ] && [ $SQL != "phpmyadmin" ] && [ $SQL != "Database" ]; then
   
     mkdir -p /var/backups/sql/$DATE
     mysqldump -u$USER -p$PASS -h$HOST $SQL | gzip > /var/backups/sql/$DATE/$SQL.sql.gz
@@ -24,3 +24,6 @@ do
   fi
 
 done
+
+# Sending copy to another server
+scp -r /var/backups/sql/$DATE backups@another-backup-server:/var/backups/sql/$DATE
